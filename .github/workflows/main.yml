@@ -1,0 +1,35 @@
+name: fxrs
+
+on:
+  schedule:
+    # 每天在北京时间4点、5点、6点、7点半、8点半和9点半运行
+    - cron: '00 20 * * *'  # UTC时间：4点
+    - cron: '00 21 * * *'  # UTC时间：5点
+    - cron: '00 22 * * *'  # UTC时间：6点
+    - cron: '30 22 * * *'  # UTC时间：7点半
+    - cron: '30 23 * * *'  # UTC时间：8点半
+    - cron: '30 00 * * *'   # UTC时间：9点半
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run_script:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.12"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Run 3456.py
+      run: |
+        python 3456.py
+      
