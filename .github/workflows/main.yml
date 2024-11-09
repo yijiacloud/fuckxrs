@@ -4,9 +4,13 @@ on:
   schedule:
     # 每天在北京时间4点、5点、6点、7点半、8点半和9点半运行
     - cron: '00 20 * * *'  # UTC时间：4点
+    - cron: '30 20 * * *'  # UTC时间：4点ban
     - cron: '00 21 * * *'  # UTC时间：5点
+    - cron: '30 21 * * *'  # UTC时间：5点半
     - cron: '00 22 * * *'  # UTC时间：6点
+    - cron: '30 22 * * *'  # UTC时间：6点ban
     - cron: '30 22 * * *'  # UTC时间：7点半
+    - cron: '00 23 * * *'  # UTC时间：8点
     - cron: '30 23 * * *'  # UTC时间：8点半
     - cron: '30 00 * * *'   # UTC时间：9点半
   workflow_dispatch:
